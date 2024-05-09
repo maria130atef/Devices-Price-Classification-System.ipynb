@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Device Price Prediction</title>
+    <style>
+        /* CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .prediction {
+            margin-top: 20px;
+            color: #007bff;
+        }
+    </style>
+
+</head>
+<body>
+    <h2>Device Price Prediction</h2>
+    <form action="/predict" method="post">
+        <!-- Input fields for all 20 features -->
+
+        <label for="battery_power">Battery Power (mAh):</label><br>
+        <input type="text" id="battery_power" name="battery_power"><br>
+
+        <label for="blue">Has Bluetooth:</label><br>
+        <select id="blue" name="blue">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select><br>
+
+        <label for="clock_speed">Clock Speed:</label><br>
+        <input type="text" id="clock_speed" name="clock_speed"><br>
+
+        <label for="dual_sim">Has Dual SIM Support:</label><br>
+        <select id="dual_sim" name="dual_sim">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select><br>
+
+        <label for="fc">Front Camera Megapixels:</label><br>
+        <input type="text" id="fc" name="fc"><br>
+
+        <label for="four_g">Has 4G:</label><br>
+        <select id="four_g" name="four_g">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select><br>
+
+        <label for="int_memory">Internal Memory (GB):</label><br>
+        <input type="text" id="int_memory" name="int_memory"><br>
+
+        <label for="m_dep">Mobile Depth (cm):</label><br>
+        <input type="text" id="m_dep" name="m_dep"><br>
+
+        <label for="mobile_wt">Mobile Weight:</label><br>
+        <input type="text" id="mobile_wt" name="mobile_wt"><br>
+
+        <label for="n_cores">Number of Cores:</label><br>
+        <input type="text" id="n_cores" name="n_cores"><br>
+
+        <label for="pc">Primary Camera Megapixels:</label><br>
+        <input type="text" id="pc" name="pc"><br>
+
+        <label for="px_height">Pixel Resolution Height:</label><br>
+        <input type="text" id="px_height" name="px_height"><br>
+
+        <label for="px_width">Pixel Resolution Width:</label><br>
+        <input type="text" id="px_width" name="px_width"><br>
+
+        <label for="ram">RAM (MB):</label><br>
+        <input type="text" id="ram" name="ram"><br>
+
+        <label for="sc_h">Screen Height (cm):</label><br>
+        <input type="text" id="sc_h" name="sc_h"><br>
+
+        <label for="sc_w">Screen Width (cm):</label><br>
+        <input type="text" id="sc_w" name="sc_w"><br>
+
+        <label for="talk_time">Talk Time:</label><br>
+        <input type="text" id="talk_time" name="talk_time"><br>
+
+        <label for="three_g">Has 3G:</label><br>
+        <select id="three_g" name="three_g">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select><br>
+
+        <label for="touch_screen">Has Touch Screen:</label><br>
+        <select id="touch_screen" name="touch_screen">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select><br>
+
+        <label for="wifi">Has WiFi:</label><br>
+        <select id="wifi" name="wifi">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select><br>
+        <!-- End of input fields for all 20 features -->
+
+        <br><br>
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if prediction_text %}
+        <p>{{ prediction_text }}</p>
+    {% endif %}
+</body>
+</html>
